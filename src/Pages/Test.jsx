@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import KhaltiComponent from '../Components/KhaltiComponent';
 
 const Test = () => {
   const [totalAmount, setTotalAmount] = useState('');
@@ -60,11 +61,13 @@ const Test = () => {
       </div>
       <input type="submit" value="Pay with eSewa" />
       </form>
+      <KhaltiComponent/>
     </>
   );
 };
 
 export default Test;
+
 
 // import React, { useEffect } from 'react';
 
