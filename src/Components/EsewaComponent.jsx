@@ -68,11 +68,11 @@ const EsewaComponent = () => {
       psc: 0, //Service charge by merchant on product or item or ticket etc
       pdc: 0,//Delivery charge by merchant on product or item or ticket etc
       txAmt: 0,//Tax amount on product or item or ticket etc
-      tAmt: 100,//Total payment amount including tax, service and deliver charge. [i.e tAmt = amt + txAmt + psc + tAmt]
+      tAmt: totalAmount,//Total payment amount including tax, service and deliver charge. [i.e tAmt = amt + txAmt + psc + tAmt]
       pid: 'ee2c3ca1-696b-4cc5-a6be-2c40d929d453',
       scd: 'EPAYTEST',
-      su: 'http://merchant.com.np/page/esewa_payment_success',
-      fu: 'http://merchant.com.np/page/esewa_payment_failed',
+      su: 'http://merchant.com.np/page/esewa_payment_success?amt=${totalAmount}?tAmt',
+      fu: 'http://merchant.com.np/page/esewa_payment_failed?amt=${totalAmount}',
     };
 
     const form = document.createElement('form');
@@ -90,8 +90,10 @@ const EsewaComponent = () => {
     document.body.appendChild(form);
     form.submit();
 
-    // Redirect after form submission
-    window.location.href = 'https://uat.esewa.com.np/epay#/'; // Replace with your desired success URL
+    form.addEventListener('submit', () => {
+        window.location.href = 'https://uat.esewa.com.np/epay#/'; // Replace with your desired success URL
+      });
+  
   };
 
   const handleChange = (e) => {

@@ -32,17 +32,18 @@ const KhaltiComponent = () => {
     };
 
     const checkout = new KhaltiCheckout(config);
-    const paymentButton = document.getElementById('payment-button');
 
     const handlePaymentButtonClick = () => {
-      const parsedAmount = parseInt(amount);
+      const parsedAmount = parseInt(amount) * 100;;
       if (!isNaN(parsedAmount) && parsedAmount >= 1000) {
         checkout.show({ amount: parsedAmount });
+        console.log(`Entered amount: ${parsedAmount}`);
       } else {
         console.log('Invalid amount');
       }
     };
 
+    const paymentButton = document.getElementById('payment-button');
     paymentButton.addEventListener('click', handlePaymentButtonClick);
 
     return () => {
