@@ -71,8 +71,8 @@ const EsewaComponent = () => {
       tAmt: totalAmount,//Total payment amount including tax, service and deliver charge. [i.e tAmt = amt + txAmt + psc + tAmt]
       pid: 'ee2c3ca1-696b-4cc5-a6be-2c40d929d453',
       scd: 'EPAYTEST',
-      su: 'http://merchant.com.np/page/esewa_payment_success?amt=${totalAmount}?tAmt',
-      fu: 'http://merchant.com.np/page/esewa_payment_failed?amt=${totalAmount}',
+      su: 'http://merchant.com.np/page/esewa_payment_success',
+      fu: 'http://merchant.com.np/page/esewa_payment_failed',
     };
 
     const form = document.createElement('form');
