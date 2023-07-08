@@ -44,7 +44,10 @@ const Booking = () => {
     setBookingType("");
     setIsTermsChecked(false);
   };
-
+  const handleBookDateChange = (date) => {
+    setBookDate(date);
+    setStartDate(date); // Set the selected booking date as the start date
+  };
   return (
     <div>
       <Navbar />
@@ -87,7 +90,7 @@ const Booking = () => {
             <label className="block font-bold mb-1">Booking Date:</label>
             <DatePicker
               selected={bookDate}
-              onChange={(date) => setBookDate(date)}
+              onChange={handleBookDateChange}
               selectsStart
               dateFormat="dd/MM/yyyy"
               minDate={new Date()}
@@ -138,6 +141,7 @@ const Booking = () => {
                 checked={isTermsChecked}
                 onChange={(e) => setIsTermsChecked(e.target.checked)}
                 color="primary"
+                required
               />
             }
             label="I agree to the terms and conditions"
@@ -146,7 +150,7 @@ const Booking = () => {
 
           <button
             type="submit"
-            className="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded disabled:opacity-50"
+            className="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded disabled:opacity-50" 
           >
             Book Now
           </button>
