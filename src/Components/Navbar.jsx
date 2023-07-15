@@ -82,7 +82,7 @@ function Navbar() {
   // };
   return (
     <div>
-      <AppBar position="static" className="mt-4 w-full">
+      <AppBar position="static" className="w-full">
         <Container maxWidth="xl">
           <Toolbar disableGutters>
             <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
