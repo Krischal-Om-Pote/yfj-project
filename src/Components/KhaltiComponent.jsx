@@ -21,24 +21,24 @@ const KhaltiComponent = () => {
         'SCT',
       ],
       eventHandler: {
-        onSuccess: (payload) => {
-          // hit merchant API for initiating verification
-          console.log(payload);
-          let data = {
-            token: payload.token,
-            amount: payload.amount,
-          };
-          axios.post(`https://meslaforum.herokuapp.com/khalti/${data.token}/${data.amount}/${myKey.secretKey}`)
-          .then(response => {
+        onSuccess: async (payload) => {
+          try {
+            // hit merchant API for initiating verification
+            console.log(payload);
+            let data = {
+              token: payload.token,
+              amount: payload.amount,
+            };
+        
+            const response = await axios.post(`https://meslaforum.herokuapp.com/khalti/${data.token}/${data.amount}/${myKey.secretKey}`);
             console.log(response.data);
             alert('Response nice', response.data);
-          })
-          .catch(error => {
+          } catch (error) {
             console.log(error);
             toast.success("Successful Payment", {
               position: toast.POSITION.TOP_RIGHT,
             });
-          });
+          }
         },
         onError: (error) => {
           console.log(error);
