@@ -158,6 +158,11 @@ function Navbar() {
                     Suppliers
                   </div>
                 </Link>
+                <Link to="/category">
+                  <div className={current === "/category" ? "font-bold" : ""}>
+                    Category
+                  </div>
+                </Link>
                 <Link to="/about">
                   <div className={current === "/about" ? "font-bold" : ""}>
                     About Us

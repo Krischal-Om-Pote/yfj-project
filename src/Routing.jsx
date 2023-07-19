@@ -7,6 +7,7 @@ import Contact from "./Pages/Contact";
 import Supplier from "./Pages/Supplier";
 import Booking from "./Pages/Booking";
 import Test from "./Pages/Test";
+import Category from "./Pages/Category";
 
 export function Routing() {
   return (
@@ -19,6 +20,7 @@ export function Routing() {
         <Route exact path="/contact" element={<Contact />} />
         <Route exact path="/suppliers" element={<Supplier />} />
         <Route exact path="/booking" element={<Booking />} />
+        <Route exact path="/category" element={<Category />} />
         <Route exact path="/test" element={<Test />} />
       </Routes>
     </div>

@@ -1,17 +1,16 @@
-import React  from "react";
+import React from "react";
 import Navbar from "../Components/Navbar";
-import Photographer from "../Components/Photographer";
 import Videographer from "../Components/Videographer";
+import MarriageComponent from "../Components/MarriageComponent";
 
-const Supplier = () => {
-
+const Category = () => {
   return (
     <div>
       <Navbar />
-      <Photographer/>
+      <MarriageComponent/>
       <Videographer/>
     </div>
   );
 };
 
-export default Supplier;
+export default Category;
