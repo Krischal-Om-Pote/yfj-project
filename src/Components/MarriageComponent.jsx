@@ -12,7 +12,7 @@ import StarIcon from "@mui/icons-material/Star";
 const MarriageComponent = () => {
     const photos = [
         {
-          src: "https://media.istockphoto.com/id/637696304/photo/patan.jpg?s=612x612&w=0&k=20&c=-53aSTGBGoOOqX5aoC3Hs1jhZ527v3Id_xOawHHVPpg=",
+          src: "https://wallpapercave.com/wp/wp2892680.jpg",
           description: "Description 1",
           rating: 5,
         },

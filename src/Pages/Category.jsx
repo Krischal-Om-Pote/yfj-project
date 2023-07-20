@@ -1,14 +1,43 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../Components/Navbar";
 import Videographer from "../Components/Videographer";
 import MarriageComponent from "../Components/MarriageComponent";
+import { Button } from "antd";
+// import OtherComponent from "../Components/OtherComponent";
 
 const Category = () => {
+  const allComponents = [<MarriageComponent key="marriage" />, <Videographer key="videographer" />];
+  const [filteredComponents, setFilteredComponents] = useState(allComponents);
+
+  const handleFilterButtonClick = (componentName) => {
+    if (componentName === "all") {
+      setFilteredComponents(allComponents);
+    } else {
+      const filtered = allComponents.filter((component) => {
+        return component.type.name === componentName;
+      });
+      setFilteredComponents(filtered);
+    }
+  };
+
   return (
     <div>
       <Navbar />
-      <MarriageComponent/>
-      <Videographer/>
+      <div className="mt-4">
+      <Button onClick={() => handleFilterButtonClick("all")}>
+        Show All
+      </Button>
+      <Button className="ml-2" onClick={() => handleFilterButtonClick("MarriageComponent")}>
+        Filter for Marriage
+      </Button>
+      <Button className="ml-2" onClick={() => handleFilterButtonClick("Videographer")}>
+        Filter for Videographer
+      </Button>
+      {/* <Button onClick={() => handleFilterButtonClick("OtherComponent")}>
+        Filter for Other Component
+      </Button> */}
+      {filteredComponents}
+      </div>
     </div>
   );
 };

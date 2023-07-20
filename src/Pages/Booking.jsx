@@ -36,6 +36,7 @@ const Booking = () => {
       endDate
     );
     // Reset form fields
+    
     setName("");
 
     setBookDate(null);

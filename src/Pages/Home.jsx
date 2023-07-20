@@ -11,7 +11,7 @@ const Home = () => {
       <div className="flex mt-4 ml-10">Snapshots</div>
       <Slider />
       <div className="mt-4 flex justify-center">
-        <div className="w-full sm:w-[1100px] bg-[#364D79] h-[200px] rounded shadow-lg flex">
+        <div className="w-full sm:w-[1100px] bg-[#1976D2] h-[200px] rounded shadow-lg flex">
           <div className="flex justify-start items-center p-4 sm:p-10 w-full sm:w-[300px]">
             <div>
               <h2 className="text-lg sm:text-xl font-bold">
