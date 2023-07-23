@@ -52,7 +52,7 @@ const KhaltiComponent = () => {
     const checkout = new KhaltiCheckout(config);
 
     const handlePaymentButtonClick = () => {
-        checkout.show({ amount: 10000});
+        checkout.show({ amount: 20000});
     };
 
     const paymentButton = document.getElementById('payment-button');
