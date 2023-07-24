@@ -19,6 +19,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import {useNavigate} from "react-router-dom";
 
 const Booking = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const [bookDate, setBookDate] = useState(null);
   const [open, setOpen] = React.useState(false);
 
@@ -64,18 +65,20 @@ const Booking = () => {
       });
       return; // Stop form submission if any field fails validation
     }
+    setIsLoading(true);
     // Format the dates to "yyyy-mm-dd" format
     const formattedBookDate = bookDate.toISOString().slice(0, 10);
     const formattedStartDate = startDate.toISOString().slice(0, 10);
     const formattedEndDate = endDate.toISOString().slice(0, 10);
     // Prepare the booking data to send to the server
     const bookingData = {
-      bookingType: bookingType,
-      bookDate:formattedBookDate,
-      startDate: formattedStartDate,
-      endDate:  formattedEndDate,
+      package_id: bookingType,
+      booking_date:formattedBookDate,
+      start_date: formattedStartDate,
+      end_date:  formattedEndDate,
     };
     console.log("bookdate", formattedBookDate);
+    console.log("bookingtype", bookingType);
     try {
       // Send the POST request using Axios
       const response = await axios.post("http://127.0.0.1:8000/api/createbooking", bookingData, {
@@ -85,7 +88,13 @@ const Booking = () => {
       });
 
       if (response.status === 200) {
-        // Success: Reset form fields
+        setIsLoading(false);
+        toast.success("Booking Sucessful", {
+          position: toast.POSITION.TOP_RIGHT,
+        });
+
+        navigate("/payment");
+
         setBookDate(null);
         setStartDate(null);
         setEndDate(null);
@@ -93,12 +102,18 @@ const Booking = () => {
 
         console.log("Booking submitted successfully!");
       } else {
+        setIsLoading(false);
         // Handle error scenarios
-        alert(error);
+        toast.error("Error submitting booking", {
+          position: toast.POSITION.TOP_RIGHT,
+        });
         console.error("Error submitting booking:", response.status);
       }
     } catch (error) {
-      alert("Error",error)
+      setIsLoading(false);
+      toast.error("Error submitting booking", {
+        position: toast.POSITION.TOP_RIGHT,
+      });
       console.error("Error submitting booking:", error);
     }
   };
@@ -136,7 +151,7 @@ const Booking = () => {
         <Button variant="contained" onClick={handleClickOpen}>
           Book Now
         </Button>
-        <Dialog open={open} onClose={handleClose}>
+        <Dialog open={open} onClose={handleClose}  >
           <DialogTitle className="flex justify-center">Book Now</DialogTitle>
           <DialogContent>
             <form
@@ -164,9 +179,9 @@ const Booking = () => {
                     sx={{ width: 235, textAlign: "left" }}
                 >
                   <MenuItem value="1">Marriage</MenuItem>
-                  <MenuItem value="2">Marriage</MenuItem>
-                  <MenuItem value="3">Marriage</MenuItem>
-                  <MenuItem value="4">Marriage</MenuItem>
+                  <MenuItem value="2">Bratabandha</MenuItem>
+                  <MenuItem value="3">Gufa</MenuItem>
+                  <MenuItem value="4">Engagement</MenuItem>
                   {/* Add more booking types as needed */}
                 </TextField>
               </div>
@@ -176,8 +191,7 @@ const Booking = () => {
                     selected={bookDate}
                     onChange={handleBookDateChange}
                     selectsStart
-                    dateFormat="P" // Use "P" to display the localized date format
-                    locale="en-US" // Set the desired locale
+                    dateFormat="yyyy/MM/dd"
                     minDate={new Date()}
                     isClearable
                     placeholderText="Select booking date"
@@ -193,8 +207,7 @@ const Booking = () => {
                     selectsStart
                     startDate={startDate}
                     endDate={endDate}
-                    dateFormat="P" // Use "P" to display the localized date format
-                    locale="en-US" // Set the desired locale
+                    dateFormat="yyyy/MM/dd"
                     minDate={new Date()}
                     isClearable
                     placeholderText="Select start date"
@@ -211,8 +224,7 @@ const Booking = () => {
                     selectsEnd
                     startDate={startDate}
                     endDate={endDate}
-                    dateFormat="P" // Use "P" to display the localized date format
-                    locale="en-US" // Set the desired locale
+                    dateFormat="yyyy/MM/dd"
                     minDate={startDate}
                     isClearable
                     placeholderText="Select end date"
@@ -237,10 +249,17 @@ const Booking = () => {
               <button
                   type="submit"
                   className="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded disabled:opacity-50"
-                  disabled={timer === 0}
+                  disabled={isLoading || timer === 0} // Disable the button when it's loading or the timer has expired
                   onClick={handleBookNow}
               >
-                Book Now ({Math.floor(timer / 60)}:{timer % 60})
+                {isLoading ? ( // Show the loader when isLoading is true
+                    <div className="flex items-center justify-center">
+                      <div className="w-4 h-4 border-t-2 border-b-2 border-white rounded-full animate-spin" />
+                      <span className="ml-2">Loading...</span>
+                    </div>
+                ) : (
+                    `Book Now (${Math.floor(timer / 60)}:${timer % 60})` // Show the regular button text when not loading
+                )}
               </button>
             </form>
           </DialogContent>

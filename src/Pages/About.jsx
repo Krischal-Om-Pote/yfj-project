@@ -18,19 +18,19 @@ const About = () => {
         <h2 className="text-2xl font-bold mb-4">Our Team</h2>
         <div className="grid grid-cols-3 gap-6">
           <div className="bg-gray-100 p-6 rounded-lg">
-            <h3 className="text-xl font-bold mb-2">John Doe</h3>
+            <h3 className="text-xl font-bold mb-2">Krischal Om Pote</h3>
             <p className="text-lg mb-4">CEO</p>
-            <p className="text-gray-700">John is an experienced leader with a passion for innovation and strategic growth. He guides our company towards success and ensures that our team is motivated and focused on achieving our goals.</p>
+            <p className="text-gray-700">Krischal is an experienced leader with a passion for innovation and strategic growth. He guides our company towards success and ensures that our team is motivated and focused on achieving our goals.</p>
           </div>
           <div className="bg-gray-100 p-6 rounded-lg">
-            <h3 className="text-xl font-bold mb-2">Jane Smith</h3>
+            <h3 className="text-xl font-bold mb-2">Sandeep Bhatta</h3>
             <p className="text-lg mb-4">Marketing Director</p>
-            <p className="text-gray-700">Jane is a creative marketing professional who spearheads our branding and promotional efforts. She has a keen eye for market trends and helps us reach a wider audience.</p>
+            <p className="text-gray-700">Sandeep is a creative marketing professional who spearheads our branding and promotional efforts. She has a keen eye for market trends and helps us reach a wider audience.</p>
           </div>
           <div className="bg-gray-100 p-6 rounded-lg">
-            <h3 className="text-xl font-bold mb-2">Alex Johnson</h3>
+            <h3 className="text-xl font-bold mb-2">Ram KC</h3>
             <p className="text-lg mb-4">Technical Lead</p>
-            <p className="text-gray-700">Alex is a skilled software engineer who oversees our technical projects. He ensures the delivery of robust and scalable solutions that meet the needs of our clients.</p>
+            <p className="text-gray-700">Ram is a skilled software engineer who oversees our technical projects. He ensures the delivery of robust and scalable solutions that meet the needs of our clients.</p>
           </div>
           {/* Add more team members here */}
         </div>

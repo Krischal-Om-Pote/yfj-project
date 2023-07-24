@@ -6,8 +6,9 @@ import Signup from "./Pages/Signup";
 import Contact from "./Pages/Contact";
 import Supplier from "./Pages/Supplier";
 import Booking from "./Pages/Booking";
-import Test from "./Pages/Test";
+import Payment from "./Pages/Payment.jsx";
 import Category from "./Pages/Category";
+import Success from "./Pages/Success.jsx";
 
 export function Routing() {
   return (
@@ -21,7 +22,8 @@ export function Routing() {
         <Route exact path="/suppliers" element={<Supplier />} />
         <Route exact path="/booking" element={<Booking />} />
         <Route exact path="/category" element={<Category />} />
-        <Route exact path="/test" element={<Test />} />
+        <Route exact path="/payment" element={<Payment />} />
+        <Route exact path="/success" element={<Success />} />
       </Routes>
     </div>
   );

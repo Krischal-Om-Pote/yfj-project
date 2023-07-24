@@ -78,7 +78,7 @@ const KhaltiComponent = () => {
         onChange={handleAmountChange}
         placeholder="Enter amount"
       /> */}
-      <button id="payment-button">Pay with Khalti</button>
+      <button className="bg-[#5E3A8E] hover:bg-purple-800 text-white font-bold py-2 px-4 rounded" id="payment-button">Pay with Khalti</button>
       {/* Place this where you need the payment button */}
     </div>
   );

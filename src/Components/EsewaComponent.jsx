@@ -61,18 +61,18 @@ const EsewaComponent = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    console.log("yehi use vaira ho!!!")
     const path = 'https://uat.esewa.com.np/epay/main';
     const params = {
-      amt: totalAmount,//Amount of product or item or ticket etc
+      amt: 200,//Amount of product or item or ticket etc
       psc: 0, //Service charge by merchant on product or item or ticket etc
       pdc: 0,//Delivery charge by merchant on product or item or ticket etc
       txAmt: 0,//Tax amount on product or item or ticket etc
-      tAmt: totalAmount,//Total payment amount including tax, service and deliver charge. [i.e tAmt = amt + txAmt + psc + tAmt]
+      tAmt: 200,//Total payment amount including tax, service and deliver charge. [i.e tAmt = amt + txAmt + psc + tAmt]
       pid: `ee2c3ca1-696b-4cc5-a6be-2c40d929d453-${Math.floor(Math.random() *99999)}`,
       scd: 'EPAYTEST',
-      su: 'http://merchant.com.np/page/esewa_payment_success',
-      fu: 'http://merchant.com.np/page/esewa_payment_failed',
+      su: 'http://localhost:3000/success',
+      fu: 'http://localhost:3000/failure',
     };
 
     const form = document.createElement('form');
@@ -93,9 +93,7 @@ const EsewaComponent = () => {
   
   };
 
-  const handleChange = (e) => {
-    setTotalAmount(e.target.value);
-  };
+
 
   return (
     <>
@@ -110,10 +108,12 @@ const EsewaComponent = () => {
         <input value="http://merchant.com.np/page/esewa_payment_success?q=su" type="hidden" name="su" />
         <input value="http://merchant.com.np/page/esewa_payment_failed?q=fu" type="hidden" name="fu" />
         <div>
-        <label>Total Amount:</label>
-        <input type="number" value={totalAmount} onChange={handleChange} />
       </div>
-      <input type="submit" value="Pay with eSewa" />
+        <input
+            type="submit"
+            value="Pay with eSewa"
+            className="bg-[#5F9537] hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+        />
       </form>
   
     </>

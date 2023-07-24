@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React  from 'react';
 import KhaltiComponent from '../Components/KhaltiComponent';
 import EsewaComponent from '../Components/EsewaComponent';
 
-const Test = () => {
+const Payment = () => {
   // const [totalAmount, setTotalAmount] = useState('');
 
   // const handleSubmit = (e) => {
@@ -62,13 +62,18 @@ const Test = () => {
       </div>
       <input type="submit" value="Pay with eSewa" />
       </form> */}
+        <div className="my-4 text-center text-xl font-bold">
+            Dear Customer, please pay Rs 200 in advance for the booking.
+        </div>
       <EsewaComponent/>
+        OR
       <KhaltiComponent/>
+        <div className="mt-[300px]"></div>
     </>
   );
 };
 
-export default Test;
+export default Payment;
 
 
 

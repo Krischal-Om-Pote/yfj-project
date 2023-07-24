@@ -17,6 +17,7 @@ const SignupComponent = () => {
   const [passwordMatchError, setPasswordMatchError] = useState('');
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+
   };
 
   const handleSubmit = async (e) => {
@@ -173,7 +174,7 @@ const SignupComponent = () => {
                     type="submit"
                     className="flex w-full justify-center rounded-md bg-indigo-600 py-2 px-4 text-sm font-semibold leading-5 text-white hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                 >
-                  Sign in
+                  Sign up
                 </button>
               </div>
             </form>
