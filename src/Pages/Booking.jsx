@@ -89,7 +89,7 @@ const Booking = () => {
 
       if (response.status === 200) {
         setIsLoading(false);
-        toast.success("Booking Sucessful", {
+        toast.success("Please proceed to payment to confirm your date", {
           position: toast.POSITION.TOP_RIGHT,
         });
 
