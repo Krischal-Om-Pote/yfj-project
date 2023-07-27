@@ -16,7 +16,8 @@ import DialogTitle from '@mui/material/DialogTitle';
 import axios from "axios";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import {useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
+import PersonAddIcon from "@mui/icons-material/PersonAdd.js";
 
 const Booking = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -40,6 +41,8 @@ const Booking = () => {
   const [bookingType, setBookingType] = useState("");
   const [isTermsChecked, setIsTermsChecked] = useState(false);
   const [timer, setTimer] = useState(5 * 60);
+  const [blockedDate, setBlockedDate] = useState(null);
+  const [bookingResponse, setBookingResponse] = useState('');
   const navigate = useNavigate(); // Get the navigate function from react-router-dom
   const authToken = localStorage.getItem("access_token");
   const handleBookNow = () => {
@@ -55,9 +58,26 @@ const Booking = () => {
     } else {
       handleClickOpen();
     }
+    axios.post('/api/bookings', bookingData)
+        .then(response => {
+          setBookingResponse(response.data.message);
+
+          // Fetch the updated blocked date after the booking request
+          axios.get('/api/get-blocked-date')
+              .then(response => {
+                setBlockedDate(response.data.blocked_date);
+              })
+              .catch(error => {
+                console.error(error);
+              });
+        })
+        .catch(error => {
+          console.error(error);
+          setBookingResponse('Booking failed.'); // Handle error message
+        });
   };
 
-  const handleSubmit = async (e) => {
+  const handleBooking = async (e) => {
     e.preventDefault();
     if (!bookingType || !bookDate || !startDate || !endDate || !isTermsChecked) {
       toast.error("Please fill in all the required fields.", {
@@ -148,26 +168,44 @@ const Booking = () => {
       <ToastContainer/>
       <Slider />
       <div className="container mx-auto mt-4">
-        <Button variant="contained" onClick={handleClickOpen}>
-          Book Now
-        </Button>
+        <div className="flex justify-between">
+          <div className="ml-10 mt-5">
+            <img
+                className="rounded w-[300px] h-[400px]"
+                src="../public/image/banner.jpeg"
+                alt=""
+            />
+          </div>
+          <div className="flex justify-center items-center">
+            <button
+                onClick={handleClickOpen}
+                className="px-6 py-3 bg-blue-500 text-white rounded-md shadow-md hover:bg-blue-600 transition-colors duration-300 transform hover:scale-105"
+            >
+              Book Now
+            </button>
+          </div>
+          <div className="mt-5 mr-10">
+            <img
+                className="rounded w-[300px] h-[400px]"
+                src="../public/image/banner1.jpeg"
+                alt=""
+            />
+          </div>
+        </div>
+
         <Dialog open={open} onClose={handleClose}  >
           <DialogTitle className="flex justify-center">Book Now</DialogTitle>
+          {blockedDate && (
+              <p style={{ color: 'red' }}>This date is blocked!</p>
+          )}
+          {bookingResponse && (
+              <p>{bookingResponse}</p>
+          )}
           <DialogContent>
             <form
-                onSubmit={handleSubmit}
-                className="max-w-md mx-auto bg-white p-8 rounded shadow"
-            >
+                onSubmit={handleBooking}>
+                className="max-w-md mx-auto bg-white p-8 rounded shadow" >
               <div className="flex gap-2 mb-4">
-                {/*<TextField*/}
-                {/*    variant="outlined"*/}
-                {/*    label="Name"*/}
-                {/*    size="small"*/}
-                {/*    value={name}*/}
-                {/*    onChange={(e) => setName(e.target.value)}*/}
-                {/*    className="mb-4"*/}
-                {/*    required*/}
-                {/*/>*/}
                 <TextField
                     select
                     value={bookingType}
@@ -265,10 +303,12 @@ const Booking = () => {
           </DialogContent>
         </Dialog>
         {/* <h1 className="text-2xl font-bold text-center mb-6">Booking Page</h1> */}
-
       </div>
     </div>
   );
 };
 
 export default Booking;
+
+
+

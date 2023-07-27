@@ -1,11 +1,11 @@
 import React from "react";
 const navigation = {
   main: [
-    { name: 'Home', href: '#' },
-    { name: 'Booking', href: '#' },
-    { name: 'Suppliers', href: '#' },
-    { name: 'About Us', href: '#' },
-    { name: 'Contact Us', href: '#' },
+    { name: 'Home', href: '/' },
+    { name: 'Booking', href: '/booking' },
+    { name: 'Our Package', href: '/suppliers' },
+    { name: 'About Us', href: '/about' },
+    { name: 'Contact Us', href: '/contact' },
   ],
   social: [
     {
@@ -65,8 +65,8 @@ export default function Footer() {
             </div>
           ))}
         </nav>
-        <div className="flex justify-center mt-6"><img src="../public/image/logo_2x-100-removebg-preview.png" alt="" width="50px"/></div>
-        <div className="mt-10 flex justify-center space-x-10">
+        <div className="flex justify-center mt-6"><img src="../public/image/YFJ.png" alt="" width="200px"/></div>
+        <div className="mt-4 flex justify-center space-x-10">
           {navigation.social.map((item) => (
             <a key={item.name} href={item.href} className="text-gray-400 hover:text-gray-500">
               <span className="sr-only">{item.name}</span>

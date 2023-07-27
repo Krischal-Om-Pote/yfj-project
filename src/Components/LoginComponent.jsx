@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
-import {toast, ToastContainer} from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import React, { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const LoginComponent = () => {
   const [formData, setFormData] = useState({
-    email: '',
-    password: '',
+    email: "",
+    password: "",
   });
 
   const handleChange = (e) => {
@@ -17,37 +17,52 @@ const LoginComponent = () => {
   const handleLogin = async () => {
     try {
       // Send a POST request to the login endpoint
-      const response = await axios.post('http://127.0.0.1:8000/api/login', formData);
+      const response = await axios.post(
+        "http://127.0.0.1:8000/api/login",
+        formData
+      );
 
       // Retrieve the user and authorization information from the response
       const { user, authorization } = response.data;
       const accessToken = authorization.token;
 
       // Store the user information in local storage
-      localStorage.setItem('user', JSON.stringify(user));
+      localStorage.setItem("user", JSON.stringify(user));
 
       // Store the access token in local storage
-      localStorage.setItem('access_token', accessToken);
+      localStorage.setItem("access_token", accessToken);
 
       // Set the authorization header for all subsequent requests
-      axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
+      axios.defaults.headers.common["Authorization"] = `Bearer ${accessToken}`;
 
       // Handle the response (e.g., redirect to dashboard if login is successful)
       console.log("User data:", user);
       console.log("Access token:", accessToken);
       // Perform any necessary actions after successful login
+      if (response.data.status === 200) {
+        navigate("/");
+        toast.success(`Welcome ${user.name}`, {
+          position: toast.POSITION.TOP_RIGHT,
+          // Adjust the autoClose duration to display the toast for a specific time (in milliseconds)
+        });
+      } else if (response.data.status === 401) {
+        toast.warn("Your not authorized", {
+          position: toast.POSITION.TOP_RIGHT,
+          // Adjust the autoClose duration to display the toast for a specific time (in milliseconds)
+        });
+      } else{
+        toast.error("Server Error", {
+          position: toast.POSITION.TOP_RIGHT,
+          // Adjust the autoClose duration to display the toast for a specific time (in milliseconds)
+        });
+      }
       setFormData({
         ...formData,
-        email: '',
-        password: '',
+        email: "",
+        password: "",
       });
-
+      
       // Navigate to the home page
-      navigate('/');
-      toast.success(`Welcome ${user.name}`, {
-        position: toast.POSITION.TOP_RIGHT,
-        // Adjust the autoClose duration to display the toast for a specific time (in milliseconds)
-      });
 
       // Wait for a few seconds before reloading the page
       setTimeout(() => {
@@ -55,7 +70,6 @@ const LoginComponent = () => {
       }, 1000);
       // Show a welcome message
       // alert(`Welcome ${user.email}`);
-
     } catch (error) {
       console.error(error.response?.data?.message || error.message);
       // Display error message or handle login failure
@@ -69,13 +83,13 @@ const LoginComponent = () => {
 
   return (
     <div>
-      <ToastContainer/>
+      <ToastContainer />
       <div className="flex min-h-full flex-1 items-center justify-center px-4 py-12 sm:px-6 lg:px-8">
         <div className="w-full max-w-sm space-y-10">
           <div>
             <img
-              className="mx-auto h-10 w-auto"
-              src="../public/image/logo_2x-100-removebg-preview.png"
+              className="mx-auto h-[120px] w-auto"
+              src="../public/image/YFJ.png"
               alt="YFJ Logo"
             />
             <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
@@ -129,13 +143,19 @@ const LoginComponent = () => {
                   type="checkbox"
                   className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
                 />
-                <label htmlFor="remember-me" className="ml-3 block text-sm leading-6 text-gray-900">
+                <label
+                  htmlFor="remember-me"
+                  className="ml-3 block text-sm leading-6 text-gray-900"
+                >
                   Remember me
                 </label>
               </div>
 
               <div className="text-sm leading-6">
-                <a href="#" className="font-semibold text-indigo-600 hover:text-indigo-500">
+                <a
+                  href="#"
+                  className="font-semibold text-indigo-600 hover:text-indigo-500"
+                >
                   Forgot password?
                 </a>
               </div>
@@ -152,8 +172,11 @@ const LoginComponent = () => {
           </form>
 
           <p className="text-center text-sm leading-6 text-gray-500">
-            Not a member?{' '}
-            <a href="/signup" className="font-semibold text-indigo-600 hover:text-indigo-500">
+            Not a member?{" "}
+            <a
+              href="/signup"
+              className="font-semibold text-indigo-600 hover:text-indigo-500"
+            >
               Sign up
             </a>
           </p>

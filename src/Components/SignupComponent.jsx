@@ -38,7 +38,7 @@ const SignupComponent = () => {
       console.log(response.data);
 
       // Check if the response status is 201 (success)
-      if (response.status === 201) {
+      if (response.status === 200) {
         // Get the access token from the response
 
         // Show a success toast notification
@@ -46,7 +46,7 @@ const SignupComponent = () => {
         toast.success("Sign Up Sucessful", {
           position: toast.POSITION.TOP_RIGHT,
         });
-            navigate('/login');
+        navigate('/login');
 
       }
 
@@ -70,12 +70,12 @@ const SignupComponent = () => {
   return (
       <>
         <ToastContainer/>
-        <div className="flex min-h-full flex-1 items-center justify-center px-4 py-12 sm:px-6 lg:px-8">
-          <div className="w-full max-w-sm space-y-6">
+        <div className="flex min-h-full flex-1 items-center justify-center px-4 py-2 sm:px-6 lg:px-8">
+          <div className="w-full max-w-sm space-y-2">
             <div>
               <img
-                  className="mx-auto h-10 w-auto"
-                  src="../public/image/logo_2x-100-removebg-preview.png"
+                  className="mx-auto h-[120px] w-auto"
+                  src="../public/image/YFJ.png"
                   alt="YFJ Logo"
               />
               <h2 className="mt-6 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">

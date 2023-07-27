@@ -12,7 +12,13 @@ const Photographer = () => {
   const photos = [
     {
       src: "https://media.istockphoto.com/id/637696304/photo/patan.jpg?s=612x612&w=0&k=20&c=-53aSTGBGoOOqX5aoC3Hs1jhZ527v3Id_xOawHHVPpg=",
-      description: "Description 1",
+      description: "Features:\n" +
+          "Full venue decoration with flowers and lighting.\n" +
+          "Dedicated wedding planner to assist with all arrangements.\n" +
+          "Catering services with a custom menu and multiple cuisine options.\n" +
+          "Professional photography and videography coverage.\n" +
+          "Live music band or DJ for entertainment.\n" +
+          "Price: $10,000",
       rating: 5,
     },
     {
@@ -62,13 +68,13 @@ const Photographer = () => {
           ))}
         </div>
         <Dialog open={selectedPhoto !== null} onClose={handleCloseDialog}>
-          <DialogTitle>Photo Description</DialogTitle>
+          <DialogTitle>Package Description</DialogTitle>
           <DialogContent>
             <img
               src={selectedPhoto?.src}
               alt="Selected Photo"
               className="selected-photo cursor-pointer"
-              width="280px"
+              width="300px"
             />
             <p>{selectedPhoto?.description}</p>
             <Rating

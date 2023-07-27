@@ -82,7 +82,7 @@ function Navbar() {
   // };
   return (
     <div>
-      <AppBar position="static" className="w-full">
+      <AppBar position="static" className="w-full mb-[50px]">
         <Container maxWidth="xl">
           <Toolbar disableGutters>
             <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -155,7 +155,7 @@ function Navbar() {
                 </Link>
                 <Link to="/suppliers">
                   <div className={current === "/suppliers" ? "font-bold" : ""}>
-                    Suppliers
+                    Our Package
                   </div>
                 </Link>
                 <Link to="/category">

@@ -26,11 +26,13 @@ const Header = () => {
       <div>
         <div className="flex flex-wrap justify-between items-center p-4 sm:p-6">
           <Link to="/">
-            <div className="w-20 sm:w-32">
+            <div className="w-20 sm:w-48">
               <img
-                  src="../public/image/logo_2x-100-removebg-preview.png"
+                  src="../public/image/YFJ.png"
                   alt="logo"
                   className="w-full"
+                  width="100px"
+                  height="100px"
               />
             </div>
           </Link>

@@ -12,7 +12,7 @@ const Home = () => {
       <Slider />
       <div className="mt-4 flex justify-center">
         <div className="w-full sm:w-[1100px] bg-[#1976D2] h-[200px] rounded shadow-lg flex">
-          <div className="flex justify-start items-center p-4 sm:p-10 w-full sm:w-[300px]">
+          <div className="flex justify-start items-center p-4 sm:p-10 w-full sm:w-[300px] text-white">
             <div>
               <h2 className="text-lg sm:text-xl font-bold">
                 Our 2 years of achievements with our super powers

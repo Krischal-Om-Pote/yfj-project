@@ -2,14 +2,9 @@ import React from "react";
 import { Carousel, Button } from "antd";
 
 const contentStyle = {
-  height: "200px",
+  height: "400px",
   color: "#fff",
   lineHeight: "160px",
-  textAlign: "center",
-  background: "#364d79",
-  padding: "20px",
-  borderRadius: "10px",
-  boxShadow: "0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)",
 };
 
 const Slider = () => {
@@ -28,28 +23,28 @@ const Slider = () => {
       <div className="flex justify-center">
         <Carousel
           autoplay
-          className=" mt-4 w-[1100px] "
+          className=" mt-4 w-[1100px]"
           dots={true}
           ref={carouselRef}
         >
-          <div>
+          <div className="rounded-lg">
             <h3 style={contentStyle}>
-              Slide 1 - Description of the first slide
+              <img src="../public/image/banner2.jpeg" className="w-full" style={{ marginTop: '-80px' , borderRadius:'10px'}}/>
             </h3>
           </div>
           <div>
             <h3 style={contentStyle}>
-              Slide 2 - Description of the second slide
+              <img src="../public/image/banner4.jpeg" className="w-full" style={{ marginTop: '-80px' , borderRadius:'10px'}}/>
             </h3>
           </div>
           <div>
             <h3 style={contentStyle}>
-              Slide 3 - Description of the third slide
+              <img src="../public/image/banner3.jpeg" className="w-full" style={{ marginTop: '-300px' , borderRadius:'10px'}}/>
             </h3>
           </div>
           <div>
             <h3 style={contentStyle}>
-              Slide 4 - Description of the fourth slide
+              <img src="../public/image/banner6.jpeg" className="w-full" style={{ marginTop: '-400px' , borderRadius:'10px'}}/>
             </h3>
           </div>
         </Carousel>
