@@ -1,15 +1,15 @@
 import React  from "react";
 import Navbar from "../Components/Navbar";
-import Photographer from "../Components/Photographer";
-import Videographer from "../Components/Videographer";
+import Wedding from "../Components/Wedding.jsx";
+import Mehendi from "../Components/Mehendi.jsx";
 
 const Supplier = () => {
 
   return (
     <div>
       <Navbar />
-      <Photographer/>
-      <Videographer/>
+      <Wedding/>
+      <Mehendi/>
     </div>
   );
 };
