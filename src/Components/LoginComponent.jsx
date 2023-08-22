@@ -5,6 +5,7 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const LoginComponent = () => {
+  const [loading, setLoading] = useState(false); 
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -17,11 +18,12 @@ const LoginComponent = () => {
   const handleLogin = async () => {
     try {
       // Send a POST request to the login endpoint
+      setLoading(true); 
       const response = await axios.post(
         "http://127.0.0.1:8000/api/login",
         formData
       );
-
+      setLoading(false);
       // Retrieve the user and authorization information from the response
       const { user, authorization } = response.data;
       const accessToken = authorization.token;
@@ -54,7 +56,7 @@ const LoginComponent = () => {
 
         setTimeout(() => {
           location.reload();
-        }, 1000);
+        }, 500);
       } else {
         // Login failed (status is not 200)
         toast.error("Login failed. Please check your credentials.", {
@@ -151,14 +153,18 @@ const LoginComponent = () => {
               </div>
             </div>
 
-            <div>
-              <button
-                type="submit"
-                className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-              >
-                Sign in
-              </button>
-            </div>
+            {loading ? (
+                <div className="flex justify-center items-center">
+                  <div className="animate-spin rounded-full h-6 w-6 border-t-2 border-blue-500 border-solid"></div>
+                </div>
+              ) : (
+                <button
+                  type="submit"
+                  className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                >
+                  Sign in
+                </button>
+              )}
           </form>
 
           <p className="text-center text-sm leading-6 text-gray-500">

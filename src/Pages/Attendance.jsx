@@ -4,70 +4,84 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from "@mui/material";
 
 const Attendance = () => {
-    const initialFormData = {
-        name: "",
-        designation: "",
-        companyname: "",
-        role: "",
-      };
-      const [formData, setFormData] = useState(initialFormData);
-      const [isLoading, setIsLoading] = useState(false);
-      const navigate = useNavigate();
-      const authToken = localStorage.getItem("access_token");
-    
-      const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData((prevFormData) => ({
-          ...prevFormData,
-          [name]: value,
-        }));
-      };
-    
-      const handleSubmit = async (e) => {
-        e.preventDefault();
-        if (!authToken) {
-          // Redirect the user to the signup/login page
-          toast.warn("Please Signup", {
-            position: toast.POSITION.TOP_RIGHT,
-          });
-          navigate("/signup");
-        } else {
-          setIsLoading(true); // Show loading state
-    
-          try {
-            // Send the POST request using Axios
-            const response = await axios.post(
-              "http://127.0.0.1:8000/api/attendance/store",
-              formData,
-              {
-                headers: {
-                  Authorization: `Bearer ${authToken}`, // Include the access token in the Authorization header
-                },
-              }
-            );
-    
-            if (response.status === 200) {
-              toast.success("Attendance is stored", {
-                position: toast.POSITION.TOP_RIGHT,
-              });
-              setFormData(initialFormData); // Reset the form fields after successful submission
-            }
-          } catch (e) {
-            console.log("Error: " + e.message);
-            toast.error("An error occurred. Please try again later.", {
-              position: toast.POSITION.TOP_RIGHT,
-            });
+  const initialFormData = {
+    name: "",
+    designation: "",
+    companyname: "",
+    role: "",
+  };
+  const [formData, setFormData] = useState(initialFormData);
+  const [isLoading, setIsLoading] = useState(false);
+  const [formSubmitted, setFormSubmitted] = useState(false);
+  const navigate = useNavigate();
+  const authToken = localStorage.getItem("access_token");
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!authToken) {
+      // Redirect the user to the signup/login page
+      toast.warn("Please Signup", {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+      navigate("/signup");
+    } else {
+      setIsLoading(true); // Show loading state
+
+      try {
+       
+        const response = await axios.post(
+          "http://127.0.0.1:8000/api/attendance/store",
+          formData,
+          {
+            headers: {
+              Authorization: `Bearer ${authToken}`, 
+            },
           }
-    
-          setIsLoading(false); // Hide loading state
+        );
+
+        if (response.status === 200) {
+          // toast.success("Attendance is stored", {
+          //   position: toast.POSITION.TOP_RIGHT,
+          // });
         }
+      } catch (e) {
+        // console.log("Error: " + e.message);
+        // toast.error("An error occurred. Please try again later.", {
+        //   position: toast.POSITION.TOP_RIGHT,
+        // });
+      }
+      
+      const newData = {
+        name: formData.name,
+        designation: formData.designation,
+        companyname: formData.companyname,
+        role: formData.role,
       };
+
+      console.log(newData);
+      savedAttendanceData.push(newData);
+      setFormSubmitted(true); 
+      localStorage.setItem("attendance_data", JSON.stringify(savedAttendanceData));
+      setIsLoading(false); // Hide loading state
+      setFormData(initialFormData); 
+    }
+  };
+  const savedAttendanceData =
+    JSON.parse(localStorage.getItem("attendance_data")) || [];
   return (
     <div>
       <Navbar />
-      <ToastContainer />
       <form onSubmit={handleSubmit}>
         <h2 className="text-base font-semibold leading-7 text-gray-900">
           Attendance
@@ -157,9 +171,38 @@ const Attendance = () => {
           type="submit"
           className="mt-4 rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
         >
-         {isLoading ? "Loading..." : "Submit"}
+          {isLoading ? "Loading..." : "Submit"}
         </button>
       </form>
+      {formSubmitted && (
+        <div>
+          <h2 className="text-base font-semibold leading-7 text-gray-900 mt-8">
+            Attendance Data
+          </h2>
+          <TableContainer component={Paper} className="mt-4">
+            <Table>
+              <TableHead>
+                <TableRow>
+                  <TableCell>Full Name</TableCell>
+                  <TableCell>Designation</TableCell>
+                  <TableCell>Company Name</TableCell>
+                  <TableCell>Role</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {savedAttendanceData.map((data, index) => (
+                  <TableRow key={index}>
+                    <TableCell>{data.name}</TableCell>
+                    <TableCell>{data.designation}</TableCell>
+                    <TableCell>{data.companyname}</TableCell>
+                    <TableCell>{data.role}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </div>
+      )}
     </div>
   );
 };

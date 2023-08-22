@@ -23,6 +23,8 @@ const Package = () => {
   const [selectedImage, setSelectedImage] = useState("");
   const [searchedImages, setSearchedImages] = useState([]);
   const [packageName, setPackageName] = useState("");
+  const authToken = localStorage.getItem("access_token");
+  console.log("Access token: " + authToken);
 
   const CAROUSEL_INDEX_STORAGE_KEY = "carouselCurrentIndex";
 
@@ -59,7 +61,7 @@ const Package = () => {
   };
 
   const handleImageClick = (index) => {
-    setSelectedImageIndex(index); // Pass the selected image URL
+    setSelectedImageIndex(index); 
     setShowDescriptionDialog(true);
   };
 
@@ -72,7 +74,7 @@ const Package = () => {
   };
   const handleDescriptionDialogClose = () => {
     setShowDescriptionDialog(false);
-    setSelectedImageIndex(null); // Reset the selected image index
+    setSelectedImageIndex(null); 
   };
   useEffect(() => {
     localStorage.setItem("selectedImages", JSON.stringify(selectedImages));
@@ -88,12 +90,14 @@ const Package = () => {
   return (
     <div>
       <Navbar />
-      <button
-        onClick={handleDialogOpen}
-        className="px-6 py-3 bg-blue-500 text-white rounded-md shadow-md hover:bg-blue-600 transition-colors duration-300 transform hover:scale-105"
-      >
-        Make Your Custom Package
-      </button>
+      {authToken && (
+        <button
+          onClick={handleDialogOpen}
+          className="px-6 py-3 bg-blue-500 text-white rounded-md shadow-md hover:bg-blue-600 transition-colors duration-300 transform hover:scale-105"
+        >
+          Make Your Custom Package
+        </button>
+      )}
 
       <CustomPackage
         open={openDialog}
@@ -139,7 +143,7 @@ const Package = () => {
       <div className="flex justify-center mt-4">
         <Carousel
           autoplay
-          className="w-[300px] cursor-pointer"
+          className="w-[1100px] cursor-pointer"
           dots={true}
           afterChange={handleCarouselChange}
         >
@@ -151,7 +155,6 @@ const Package = () => {
                   className="w-full"
                   style={{ marginTop: "-80px", borderRadius: "10px" }}
                   onClick={() => handleImageClick(index)}
-                  width="100px"
                 />
               </h3>
             </div>
