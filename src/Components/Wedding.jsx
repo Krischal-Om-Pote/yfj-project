@@ -8,7 +8,7 @@ import {
 } from "@mui/material";
 import Rating from "@mui/material/Rating";
 import StarIcon from "@mui/icons-material/Star";
-const Photographer = () => {
+const Wedding = () => {
   const photos = [
     {
       src: "https://assets.vogue.com/photos/645ba7a6a22b7272aab20623/4:3/w_2436,h_1827,c_limit/Kamila%20&%20Oren%2048.jpg",
@@ -116,6 +116,7 @@ const Photographer = () => {
             value={rating}
             onChange={(event, value) => handleRatingChange(value)}
             emptyIcon={<StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />}
+            className="ml-8"
           />
           </DialogContent>
           <DialogActions>
@@ -129,4 +130,4 @@ const Photographer = () => {
   );
 };
 
-export default Photographer;
+export default Wedding;

@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import Navbar from "../Components/Navbar";
-import Videographer from "../Components/Videographer";
+import Mehendi from "../Components/Mehendi.jsx";
 import MarriageComponent from "../Components/MarriageComponent";
 import { Button } from "antd";
 // import OtherComponent from "../Components/OtherComponent";
 
 const Category = () => {
-  const allComponents = [<MarriageComponent key="marriage" />, <Videographer key="videographer" />];
+  const allComponents = [<MarriageComponent key="marriage" />, <Mehendi key="videographer" />];
   const [filteredComponents, setFilteredComponents] = useState(allComponents);
 
   const handleFilterButtonClick = (componentName) => {

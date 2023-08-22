@@ -23,25 +23,25 @@ const Home = () => {
           <div className="flex justify-end p-4 sm:p-10 w-full sm:w-[800px]">
             <div className="grid grid-cols-2 gap-1">
               <div className="p-2 bg-white rounded flex justify-center">
-                <img src="../public/image/events.png" alt="" width="40px" />
+                <img src="events.png" alt="" width="40px" />
               </div>
               <div className="p-2 bg-white rounded flex justify-center">
                 <img
-                  src="../public/image/event-management.png"
+                  src="event-management.png"
                   alt=""
                   width="40px"
                 />
               </div>
               <div className="p-2 bg-white rounded flex justify-center">
                 <img
-                  src="../public/image/opening-ceremony.png"
+                  src="opening-ceremony.png"
                   alt=""
                   width="40px"
                 />
               </div>
               <div className="p-2 bg-white rounded flex justify-center">
                 <img
-                  src="../public/image/time-management.png"
+                  src="time-management.png"
                   alt=""
                   width="40px"
                 />
@@ -54,7 +54,7 @@ const Home = () => {
         <div className="ml-10 mt-5">
           <img
             className="rounded w-[300px] h-[400px]"
-            src="../public/image/banner.jpeg"
+            src="../banner.jpeg"
             alt=""
           />
         </div>
@@ -69,7 +69,7 @@ const Home = () => {
         <div className="mt-5 mr-10">
           <img
             className="rounded w-[300px] h-[400px]"
-            src="../public/image/banner1.jpeg"
+            src="banner1.jpeg"
             alt=""
           />
         </div>

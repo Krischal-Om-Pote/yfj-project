@@ -1,6 +1,7 @@
 import React  from 'react';
 import KhaltiComponent from '../Components/KhaltiComponent';
 import EsewaComponent from '../Components/EsewaComponent';
+import Navbar from "../Components/Navbar.jsx";
 
 const Payment = () => {
   // const [totalAmount, setTotalAmount] = useState('');
@@ -46,6 +47,7 @@ const Payment = () => {
 
   return (
     <>
+        <Navbar/>
       {/* <form action="https://uat.esewa.com.np/epay/main" method="POST" onSubmit={handleSubmit}>
         <input value={totalAmount} name="amt" type="hidden" />
         <input value={totalAmount} name="tAmt" type="hidden" />
@@ -66,8 +68,8 @@ const Payment = () => {
             Dear Customer, please pay Rs 200 in advance for the booking.
         </div>
       <EsewaComponent/>
-        OR
-      <KhaltiComponent/>
+        {/* OR
+      <KhaltiComponent/> */}
         <div className="mt-[300px]"></div>
     </>
   );

@@ -39,40 +39,30 @@ const LoginComponent = () => {
       console.log("User data:", user);
       console.log("Access token:", accessToken);
       // Perform any necessary actions after successful login
-      if (response.data.status === 200) {
-        navigate("/");
+      if (response.status === 200) {
+        // Login successful
         toast.success(`Welcome ${user.name}`, {
           position: toast.POSITION.TOP_RIGHT,
-          // Adjust the autoClose duration to display the toast for a specific time (in milliseconds)
         });
-      } else if (response.data.status === 401) {
-        toast.warn("Your not authorized", {
-          position: toast.POSITION.TOP_RIGHT,
-          // Adjust the autoClose duration to display the toast for a specific time (in milliseconds)
+
+        navigate("/");
+        setFormData({
+          ...formData,
+          email: "",
+          password: "",
         });
-      } else{
-        toast.error("Server Error", {
+
+        setTimeout(() => {
+          location.reload();
+        }, 1000);
+      } else {
+        // Login failed (status is not 200)
+        toast.error("Login failed. Please check your credentials.", {
           position: toast.POSITION.TOP_RIGHT,
-          // Adjust the autoClose duration to display the toast for a specific time (in milliseconds)
         });
       }
-      setFormData({
-        ...formData,
-        email: "",
-        password: "",
-      });
-      
-      // Navigate to the home page
-
-      // Wait for a few seconds before reloading the page
-      setTimeout(() => {
-        location.reload();
-      }, 1000);
-      // Show a welcome message
-      // alert(`Welcome ${user.email}`);
     } catch (error) {
       console.error(error.response?.data?.message || error.message);
-      // Display error message or handle login failure
     }
   };
 
@@ -89,7 +79,7 @@ const LoginComponent = () => {
           <div>
             <img
               className="mx-auto h-[120px] w-auto"
-              src="../public/image/YFJ.png"
+              src="YFJ-min.png"
               alt="YFJ Logo"
             />
             <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">

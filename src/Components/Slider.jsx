@@ -29,22 +29,22 @@ const Slider = () => {
         >
           <div className="rounded-lg">
             <h3 style={contentStyle}>
-              <img src="../public/image/banner2.jpeg" className="w-full" style={{ marginTop: '-80px' , borderRadius:'10px'}}/>
+              <img src="banner2.jpeg" className="w-full" style={{ marginTop: '-80px' , borderRadius:'10px'}}/>
             </h3>
           </div>
           <div>
             <h3 style={contentStyle}>
-              <img src="../public/image/banner4.jpeg" className="w-full" style={{ marginTop: '-80px' , borderRadius:'10px'}}/>
+              <img src="banner4.jpeg" className="w-full" style={{ marginTop: '-80px' , borderRadius:'10px'}}/>
             </h3>
           </div>
           <div>
             <h3 style={contentStyle}>
-              <img src="../public/image/banner3.jpeg" className="w-full" style={{ marginTop: '-300px' , borderRadius:'10px'}}/>
+              <img src="banner3.jpeg" className="w-full" style={{ marginTop: '-300px' , borderRadius:'10px'}}/>
             </h3>
           </div>
           <div>
             <h3 style={contentStyle}>
-              <img src="../public/image/banner6.jpeg" className="w-full" style={{ marginTop: '-400px' , borderRadius:'10px'}}/>
+              <img src="banner6.jpeg" className="w-full" style={{ marginTop: '-400px' , borderRadius:'10px'}}/>
             </h3>
           </div>
         </Carousel>

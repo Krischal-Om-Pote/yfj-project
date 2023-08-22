@@ -65,7 +65,7 @@ export default function Footer() {
             </div>
           ))}
         </nav>
-        <div className="flex justify-center mt-6"><img src="../public/image/YFJ.png" alt="" width="200px"/></div>
+        <div className="flex justify-center mt-6"><img src="YFJ-min.png" alt="" width="200px"/></div>
         <div className="mt-4 flex justify-center space-x-10">
           {navigation.social.map((item) => (
             <a key={item.name} href={item.href} className="text-gray-400 hover:text-gray-500">

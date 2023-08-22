@@ -28,7 +28,7 @@ const Header = () => {
           <Link to="/">
             <div className="w-20 sm:w-48">
               <img
-                  src="../public/image/YFJ.png"
+                  src="YFJ-min.png"
                   alt="logo"
                   className="w-full"
                   width="100px"

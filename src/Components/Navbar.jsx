@@ -64,7 +64,6 @@ function Navbar() {
   const [current, setCurrent] = useState(location.pathname);
   // console.log(current);
   const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -122,16 +121,22 @@ function Navbar() {
                           Home
                         </li>
                       </Link>
-                      <li>
-                        <a href="asdas">Booking</a>
-                      </li>
+                      <Link to="/booking">
+                        <li className={current === "/booking" ? "font-bold" : ""}>
+                          Booking
+                        </li>
+                      </Link>
                       <li>Suppliers</li>
                       <Link to="/about">
                         <li className={current === "/about" ? "font-bold" : ""}>
                           About Us
                         </li>
                       </Link>
-                      <li>Contact Us</li>
+                      <Link to="/contact">
+                        <li className={current === "/contact" ? "font-bold" : ""}>
+                          Contact Us
+                        </li>
+                      </Link>
                     </ul>
                   </Typography>
                 </MenuItem>
@@ -153,8 +158,8 @@ function Navbar() {
                     Booking
                   </div>
                 </Link>
-                <Link to="/suppliers">
-                  <div className={current === "/suppliers" ? "font-bold" : ""}>
+                <Link to="/package">
+                  <div className={current === "/package" ? "font-bold" : ""}>
                     Our Package
                   </div>
                 </Link>
@@ -166,6 +171,16 @@ function Navbar() {
                 <Link to="/about">
                   <div className={current === "/about" ? "font-bold" : ""}>
                     About Us
+                  </div>
+                </Link>
+                <Link to="/attendance">
+                  <div className={current === "/attendance" ? "font-bold" : ""}>
+                    Attendance
+                  </div>
+                </Link>
+                <Link to="/location">
+                  <div className={current === "/location" ? "font-bold" : ""}>
+                    Location
                   </div>
                 </Link>
                 <Link to="/contact">

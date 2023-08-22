@@ -112,7 +112,7 @@ const EsewaComponent = () => {
         <input
             type="submit"
             value="Pay with eSewa"
-            className="bg-[#5F9537] hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+            className="bg-[#5F9537] hover:bg-green-700 text-white font-bold py-2 px-4 rounded cursor-pointer"
         />
       </form>
   

@@ -9,7 +9,7 @@ import {
 import Rating from "@mui/material/Rating";
 import StarIcon from "@mui/icons-material/Star";
 
-const Videographer = () => {
+const Mehendi = () => {
     const photos = [
         {
           src: "https://www.postoast.com/wp-content/uploads/2020/07/Mehndi-ceremony-Significance-1.jpg",
@@ -127,4 +127,4 @@ const Videographer = () => {
   )
 }
 
-export default Videographer
+export default Mehendi

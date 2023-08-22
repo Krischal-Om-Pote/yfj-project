@@ -75,7 +75,7 @@ const SignupComponent = () => {
             <div>
               <img
                   className="mx-auto h-[120px] w-auto"
-                  src="../public/image/YFJ.png"
+                  src="YFJ-min.png"
                   alt="YFJ Logo"
               />
               <h2 className="mt-6 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">

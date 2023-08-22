@@ -172,7 +172,7 @@ const Booking = () => {
           <div className="ml-10 mt-5">
             <img
                 className="rounded w-[300px] h-[400px]"
-                src="../public/image/banner.jpeg"
+                src="../banner.jpeg"
                 alt=""
             />
           </div>
@@ -187,7 +187,7 @@ const Booking = () => {
           <div className="mt-5 mr-10">
             <img
                 className="rounded w-[300px] h-[400px]"
-                src="../public/image/banner1.jpeg"
+                src="../banner1.jpeg"
                 alt=""
             />
           </div>
@@ -203,8 +203,7 @@ const Booking = () => {
           )}
           <DialogContent>
             <form
-                onSubmit={handleBooking}>
-                className="max-w-md mx-auto bg-white p-8 rounded shadow" >
+                onSubmit={handleBooking}    className="max-w-md mx-auto bg-white p-8 rounded shadow" >
               <div className="flex gap-2 mb-4">
                 <TextField
                     select
